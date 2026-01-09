@@ -1,0 +1,72 @@
+/* 移动端优化样式 */
+
+/* 全局响应式调整 */
+@media (max-width: 768px) {
+  /* 表格在小屏幕上自动滚动 */
+  .ant-table-wrapper {
+    overflow-x: auto;
+  }
+
+  /* 卡片内边距调整 */
+  .ant-card-body {
+    padding: 16px !important;
+  }
+
+  /* 表单标签和输入框间距 */
+  .ant-form-item-label {
+    padding-bottom: 4px !important;
+  }
+
+  /* 按钮组间距 */
+  .ant-space {
+    width: 100%;
+  }
+
+  /* 描述列表在移动端单列显示 */
+  .ant-descriptions-item-label,
+  .ant-descriptions-item-content {
+    padding: 8px 12px !important;
+  }
+
+  /* 列表项在移动端优化 */
+  .ant-list-item {
+    padding: 12px 0 !important;
+  }
+
+  /* 抽屉菜单宽度 */
+  .ant-drawer-body {
+    padding: 0 !important;
+  }
+}
+
+/* 超小屏幕优化 */
+@media (max-width: 576px) {
+  /* 标题字体大小 */
+  .ant-card-head-title {
+    font-size: 16px !important;
+  }
+
+  /* 按钮文字大小 */
+  .ant-btn {
+    font-size: 14px !important;
+  }
+
+  /* 输入框字体大小 */
+  .ant-input,
+  .ant-select-selector {
+    font-size: 16px !important; /* 防止 iOS 自动缩放 */
+  }
+}
+
+/* 触摸设备优化 */
+@media (hover: none) and (pointer: coarse) {
+  /* 增加可点击区域 */
+  .ant-btn {
+    min-height: 44px;
+  }
+
+  .ant-menu-item {
+    min-height: 48px;
+    line-height: 48px;
+  }
+}
