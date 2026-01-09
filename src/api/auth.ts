@@ -14,7 +14,8 @@ export const login = async (data: LoginRequest): Promise<LoginResponse> => {
   // 生产环境使用真实API
   console.log('使用真实API模式');
   try {
-    return await apiClient.post<LoginResponse>('/auth/login', data);
+    const result = await apiClient.post<LoginResponse>('/auth/login', data);
+    return result as unknown as LoginResponse;
   } catch (error: any) {
     // 如果 API 调用失败，在开发模式下提示使用模拟登录
     if (import.meta.env.DEV) {

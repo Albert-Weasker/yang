@@ -56,7 +56,7 @@ export const ProjectDetailPage: React.FC = () => {
     return PROJECT_STATUS_FLOW[currentIndex + 1];
   };
 
-  if (!project) {
+  if (loading || !project) {
     return <div>加载中...</div>;
   }
 

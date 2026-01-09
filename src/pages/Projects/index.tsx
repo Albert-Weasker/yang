@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Button, Space, Card } from 'antd';
+import { Button, Card } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import { getProjects } from '@/api/project';
-import { Project, ProjectStatus } from '@/types';
+import { Project } from '@/types';
 import { ProjectTable } from '@/components/ProjectTable';
 
 export const ProjectsPage: React.FC = () => {

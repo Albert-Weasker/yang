@@ -8,13 +8,11 @@ import dayjs from 'dayjs';
 interface ProjectTableProps {
   projects: Project[];
   loading?: boolean;
-  onStatusFilter?: (status: ProjectStatus | 'all') => void;
 }
 
 export const ProjectTable: React.FC<ProjectTableProps> = ({
   projects,
   loading = false,
-  onStatusFilter,
 }) => {
   const navigate = useNavigate();
   const { isMobile } = useResponsive();
@@ -37,7 +35,7 @@ export const ProjectTable: React.FC<ProjectTableProps> = ({
         { text: ProjectStatus.START, value: ProjectStatus.START },
         { text: ProjectStatus.PRODUCE, value: ProjectStatus.PRODUCE },
       ],
-      onFilter: (value: string | number | boolean, record: Project) => {
+      onFilter: (value: boolean | React.Key, record: Project) => {
         if (value === 'all') return true;
         return record.status === value;
       },

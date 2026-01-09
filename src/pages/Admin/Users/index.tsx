@@ -72,7 +72,7 @@ export const AdminUsersPage: React.FC = () => {
       title: '状态',
       dataIndex: 'status',
       key: 'status',
-      render: (status: UserStatus, record: User) => (
+      render: (status: UserStatus) => (
         <Tag color={status === UserStatus.ACTIVE ? 'green' : 'red'}>{status}</Tag>
       ),
     },

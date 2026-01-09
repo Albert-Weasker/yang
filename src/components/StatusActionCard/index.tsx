@@ -1,4 +1,4 @@
-import { Card, Button, Upload, message, Space } from 'antd';
+import { Card, Button, Upload, message } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import { useState } from 'react';
 import { ProjectStatus } from '@/types';

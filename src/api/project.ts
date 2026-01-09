@@ -27,7 +27,8 @@ export const getProject = async (id: string): Promise<Project> => {
   if (isMockMode()) {
     return mockGetProject(id);
   }
-  return apiClient.get<Project>(`/projects/${id}`);
+  const data = await apiClient.get<Project>(`/projects/${id}`);
+  return data as unknown as Project;
 };
 
 /**
@@ -48,9 +49,10 @@ export const createProject = async (data: CreateProjectRequest): Promise<Project
   if (data.initialAttachment) {
     formData.append('attachment', data.initialAttachment);
   }
-  return apiClient.post<Project>('/projects', formData, {
+  const result = await apiClient.post<Project>('/projects', formData, {
     headers: { 'Content-Type': 'multipart/form-data' },
   });
+  return result as unknown as Project;
 };
 
 /**
@@ -65,7 +67,8 @@ export const updateProjectStatus = async (
   const formData = new FormData();
   formData.append('status', data.status);
   formData.append('attachment', data.attachment);
-  return apiClient.put<Project>(`/projects/${data.projectId}/status`, formData, {
+  const result = await apiClient.put<Project>(`/projects/${data.projectId}/status`, formData, {
     headers: { 'Content-Type': 'multipart/form-data' },
   });
+  return result as unknown as Project;
 };

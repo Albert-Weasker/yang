@@ -95,7 +95,8 @@ export const updateUserStatus = async (userId: string, status: string): Promise<
   if (isMockMode()) {
     return mockUpdateUserStatus(userId, status as UserStatus);
   }
-  return apiClient.put<User>(`/admin/users/${userId}/status`, { status });
+  const data = await apiClient.put<User>(`/admin/users/${userId}/status`, { status });
+  return data as unknown as User;
 };
 
 /**
@@ -105,5 +106,6 @@ export const updateUserRole = async (userId: string, role: string): Promise<User
   if (isMockMode()) {
     return mockUpdateUserRole(userId, role as UserRole);
   }
-  return apiClient.put<User>(`/admin/users/${userId}/role`, { role });
+  const data = await apiClient.put<User>(`/admin/users/${userId}/role`, { role });
+  return data as unknown as User;
 };
