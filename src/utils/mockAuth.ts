@@ -65,14 +65,28 @@ export const mockLogin = (data: LoginRequest): Promise<LoginResponse> => {
 };
 
 /**
- * 是否启用模拟登录（开发模式）
- * 默认在开发模式下启用，除非明确设置为 false
+ * 是否启用模拟登录
+ * 开发模式：默认启用，除非明确设置为 false
+ * 生产模式：如果设置了 VITE_USE_MOCK=true，则启用模拟
  */
 export const isMockMode = (): boolean => {
-  // 开发模式下，如果没有设置 VITE_USE_MOCK 或设置为 'true'，则启用模拟
-  if (import.meta.env.DEV) {
-    const useMock = import.meta.env.VITE_USE_MOCK;
-    return useMock !== 'false'; // 默认启用，除非明确设置为 false
+  const useMock = import.meta.env.VITE_USE_MOCK;
+  
+  // 如果明确设置为 'true'，则启用模拟（开发和生产都支持）
+  if (useMock === 'true') {
+    return true;
   }
+  
+  // 如果明确设置为 'false'，则禁用模拟
+  if (useMock === 'false') {
+    return false;
+  }
+  
+  // 开发模式下，默认启用模拟（如果没有设置环境变量）
+  if (import.meta.env.DEV) {
+    return true;
+  }
+  
+  // 生产模式下，默认禁用模拟（需要明确设置 VITE_USE_MOCK=true）
   return false;
 };
